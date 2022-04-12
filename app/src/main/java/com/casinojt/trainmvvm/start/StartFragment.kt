@@ -9,6 +9,7 @@ import android.widget.Button
 import androidx.lifecycle.ViewModelProvider
 import com.casinojt.trainmvvm.R
 import com.casinojt.trainmvvm.databinding.FragmentStartBinding
+import com.casinojt.trainmvvm.utilits.APP_ACTIVITY
 import com.casinojt.trainmvvm.utilits.TYPE_ROOM
 
 class StartFragment : Fragment() {
@@ -22,16 +23,22 @@ class StartFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        var view = inflater.inflate(R.layout.fragment_start,container,false)
-        btn_room = view.findViewById(R.id.btn_room)
+        //var view = inflater.inflate(R.layout.fragment_start,container,false)
         _binding = FragmentStartBinding.inflate(layoutInflater, container, false)
         return mBinding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initialization()
+    }
+
     private fun initialization() {
         mViewModel = ViewModelProvider(this).get(StartFragmentViewModel::class.java)
-        btn_room?.setOnClickListener {
-            mViewModel.initDataBase(TYPE_ROOM)
+        _binding?.btnRoom?.setOnClickListener {
+            mViewModel.initDataBase(TYPE_ROOM){
+                APP_ACTIVITY.mNavController.navigate(R.id.action_startFragment_to_mainFragment)
+            }
         }
     }
 }
