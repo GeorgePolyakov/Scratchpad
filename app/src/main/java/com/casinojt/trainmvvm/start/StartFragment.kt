@@ -14,8 +14,8 @@ import com.casinojt.trainmvvm.utilits.TYPE_ROOM
 
 class StartFragment : Fragment() {
 
-    private var _binding: FragmentStartBinding? = null
-    private val mBinding get() = _binding!!
+    private var binding: FragmentStartBinding? = null
+    private val mBinding get() = binding!!
     private lateinit var mViewModel: StartFragmentViewModel
     private var btn_room: Button? = null
 
@@ -24,7 +24,7 @@ class StartFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         //var view = inflater.inflate(R.layout.fragment_start,container,false)
-        _binding = FragmentStartBinding.inflate(layoutInflater, container, false)
+        binding = FragmentStartBinding.inflate(layoutInflater, container, false)
         return mBinding.root
     }
 
@@ -35,10 +35,15 @@ class StartFragment : Fragment() {
 
     private fun initialization() {
         mViewModel = ViewModelProvider(this).get(StartFragmentViewModel::class.java)
-        _binding?.btnRoom?.setOnClickListener {
+        binding?.btnRoom?.setOnClickListener {
             mViewModel.initDataBase(TYPE_ROOM){
                 APP_ACTIVITY.mNavController.navigate(R.id.action_startFragment_to_mainFragment)
             }
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
     }
 }

@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.casinojt.trainmvvm.screens.MainFragment"
+        android:name="com.casinojt.trainmvvm.screens.main.MainFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_main" >
         <action
