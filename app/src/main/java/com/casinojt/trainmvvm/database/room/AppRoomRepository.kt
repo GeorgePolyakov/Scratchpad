@@ -8,7 +8,7 @@ class AppRoomRepository(private val appRoomDao: RoomDao):DatabaseRepository {
     override val allNotes: LiveData<List<AppNote>>
         get() = appRoomDao.getAllNotes()
 
-    override suspend fun insert(note: AppNote, onSuccess: () -> Unit) {
+    override suspend fun insert(note: AppNote) {
         appRoomDao.insert(note)
     }
 

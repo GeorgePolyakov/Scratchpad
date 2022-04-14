@@ -5,6 +5,6 @@ import com.casinojt.trainmvvm.model.AppNote
 
 interface DatabaseRepository {
     val allNotes:LiveData<List<AppNote>>
-    suspend fun insert(note:AppNote, onSuccess:()->Unit)
+    suspend fun insert(note:AppNote)
     suspend fun delete(note:AppNote, onSuccess:()->Unit)
 }
