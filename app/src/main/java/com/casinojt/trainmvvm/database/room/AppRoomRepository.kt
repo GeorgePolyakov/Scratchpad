@@ -12,7 +12,7 @@ class AppRoomRepository(private val appRoomDao: RoomDao):DatabaseRepository {
         appRoomDao.insert(note)
     }
 
-    override suspend fun delete(note: AppNote, onSuccess: () -> Unit) {
+    override suspend fun delete(note: AppNote) {
         appRoomDao.delete(note)
     }
 

@@ -46,7 +46,7 @@ class MainFragment : Fragment() {
         mViewModel = ViewModelProvider(this).get(MainFramentViewModel::class.java)
         mViewModel.allNotes.observe(viewLifecycleOwner,mObserverList)
         mBinding.btnAddNote.setOnClickListener{
-            APP_ACTIVITY.mNavController.navigate(R.id.action_mainFragment_to_addNewNoteFragment)
+            APP_ACTIVITY.navController.navigate(R.id.action_mainFragment_to_addNewNoteFragment)
         }
     }
 
@@ -55,6 +55,15 @@ class MainFragment : Fragment() {
         super.onDestroyView()
         binding = null
         mRecyclerView.adapter = null
+
+    }
+
+    companion object{
+        fun click(note:AppNote){
+            val bundle = Bundle ()
+            bundle.putSerializable("note",note)
+            APP_ACTIVITY.navController.navigate(R.id.action_mainFragment_to_noteFragment, bundle)
+        }
     }
 
 }

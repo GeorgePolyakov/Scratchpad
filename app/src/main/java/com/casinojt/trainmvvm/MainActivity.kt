@@ -11,7 +11,7 @@ import com.casinojt.trainmvvm.utilits.APP_ACTIVITY
 class MainActivity : AppCompatActivity() {
 
     lateinit var mToolbar: Toolbar
-    lateinit var mNavController: NavController
+    lateinit var navController: NavController
     private var _binding: ActivityMainBinding? = null
     val mBinding get() = _binding!!
 
@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(mBinding.root)
         mToolbar = mBinding.toolbar
         APP_ACTIVITY = this // для получения контекста в любом месте нашего приложения
-        mNavController = Navigation.findNavController(this, R.id.nav_host_fragment)
+        navController = Navigation.findNavController(this, R.id.nav_host_fragment)
         setSupportActionBar(mToolbar)
         title = getString(R.string.title)
 
