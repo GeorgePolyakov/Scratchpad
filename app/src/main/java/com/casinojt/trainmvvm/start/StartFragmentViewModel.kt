@@ -6,7 +6,9 @@ import androidx.room.RoomDatabase
 import com.casinojt.trainmvvm.database.room.AppRoomRepository
 import com.casinojt.trainmvvm.database.room.ApplicationRoomDataBase
 import com.casinojt.trainmvvm.utilits.REPOSITORY
+import com.casinojt.trainmvvm.utilits.TYPE_FIREBASE
 import com.casinojt.trainmvvm.utilits.TYPE_ROOM
+import com.casinojt.trainmvvm.utilits.showToast
 
 class StartFragmentViewModel (application: Application):AndroidViewModel(application){
     private val mContext = application
@@ -17,6 +19,9 @@ class StartFragmentViewModel (application: Application):AndroidViewModel(applica
                 val dao = ApplicationRoomDataBase.getInstance(mContext).getApplicationRoomDao()
                 REPOSITORY = AppRoomRepository(dao)
                 onSuccess()
+            }
+            TYPE_FIREBASE -> {
+                showToast(TYPE_FIREBASE)
             }
         }
     }

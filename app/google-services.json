@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "555844731420",
+    "project_id": "scratchpad-4ca71",
+    "storage_bucket": "scratchpad-4ca71.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:555844731420:android:a38f4bc5085a34912055d9",
+        "android_client_info": {
+          "package_name": "com.casinojt.trainmvvm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "555844731420-8nshfdj1eeg9r4pgqjaulnqm7f3jvqee.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4p3NOS1TB-PU6FhLv6gE9hHk_SeMmSKw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "555844731420-8nshfdj1eeg9r4pgqjaulnqm7f3jvqee.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
