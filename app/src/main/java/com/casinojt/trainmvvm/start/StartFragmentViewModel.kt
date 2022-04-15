@@ -3,6 +3,7 @@ package com.casinojt.trainmvvm.start
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.room.RoomDatabase
+import com.casinojt.trainmvvm.database.firebase.AppFireBaseRepository
 import com.casinojt.trainmvvm.database.room.AppRoomRepository
 import com.casinojt.trainmvvm.database.room.ApplicationRoomDataBase
 import com.casinojt.trainmvvm.utilits.REPOSITORY
@@ -21,7 +22,8 @@ class StartFragmentViewModel (application: Application):AndroidViewModel(applica
                 onSuccess()
             }
             TYPE_FIREBASE -> {
-                showToast(TYPE_FIREBASE)
+                REPOSITORY = AppFireBaseRepository()
+                REPOSITORY.connectToDataBase({onSuccess()},{ showToast(it)})
             }
         }
     }
