@@ -11,11 +11,11 @@ import com.casinojt.trainmvvm.utilits.TYPE_FIREBASE
 import com.casinojt.trainmvvm.utilits.TYPE_ROOM
 import com.casinojt.trainmvvm.utilits.showToast
 
-class StartFragmentViewModel (application: Application):AndroidViewModel(application){
+class StartFragmentViewModel(application: Application) : AndroidViewModel(application) {
     private val mContext = application
 
-    fun initDataBase(type:String,onSuccess:()->Unit){
-        when (type){
+    fun initDataBase(type: String, onSuccess: () -> Unit) {
+        when (type) {
             TYPE_ROOM -> {
                 val dao = ApplicationRoomDataBase.getInstance(mContext).getApplicationRoomDao()
                 REPOSITORY = AppRoomRepository(dao)
@@ -23,7 +23,7 @@ class StartFragmentViewModel (application: Application):AndroidViewModel(applica
             }
             TYPE_FIREBASE -> {
                 REPOSITORY = AppFireBaseRepository()
-                REPOSITORY.connectToDataBase({onSuccess()},{ showToast(it)})
+                REPOSITORY.connectToDataBase({ onSuccess() }, { showToast(it) })
             }
         }
     }

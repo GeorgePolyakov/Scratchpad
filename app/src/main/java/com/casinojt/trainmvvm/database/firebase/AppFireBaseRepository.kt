@@ -24,13 +24,17 @@ class AppFireBaseRepository : DatabaseRepository {
     override fun connectToDataBase(onSuccess: () -> Unit, onFail: (String) -> Unit) {
         super.connectToDataBase(onSuccess, onFail)
         firebaseAuthInstance.signInWithEmailAndPassword(EMAIL, PASSSWORD)
-            .addOnSuccessListener { onSuccess }
+            .addOnSuccessListener { onSuccess() }
             .addOnFailureListener{
-                it.message.toString()
+                firebaseAuthInstance.createUserWithEmailAndPassword(EMAIL, PASSSWORD) // create new user in firebase
+                    .addOnSuccessListener { onSuccess() }
+                    .addOnFailureListener{onFail(it.message.toString()) }
             }
+
     }
 
     override fun signOut() {
         super.signOut()
+        firebaseAuthInstance.signOut()
     }
 }
