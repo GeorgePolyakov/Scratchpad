@@ -51,7 +51,7 @@ class StartFragment : Fragment() {
                     PASSSWORD = inputPassword
                     mViewModel.initDataBase(TYPE_FIREBASE) {
                         showToast("INIT OK")
-                        // APP_ACTIVITY.navController.navigate(R.id.action_startFragment_to_mainFragment) // chose Db type Firebase and navigate to MainFragment
+                        APP_ACTIVITY.navController.navigate(R.id.action_startFragment_to_mainFragment) // chose Db type Firebase and navigate to MainFragment
                     }
                 } else {
                     showToast(getString(R.string.toast_wrong_answer))
