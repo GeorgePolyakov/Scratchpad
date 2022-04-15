@@ -1,10 +1,9 @@
 package com.casinojt.trainmvvm.screens.main
 
 import android.os.Bundle
+import android.util.Log
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
@@ -19,8 +18,8 @@ class MainFragment : Fragment() {
     private val mBinding get() = binding!!
     private lateinit var mViewModel: MainFramentViewModel
     private lateinit var mRecyclerView: RecyclerView
-    private lateinit var mAdapter:MainAdapter
-    private lateinit var mObserverList:Observer<List<AppNote>>
+    private lateinit var mAdapter: MainAdapter
+    private lateinit var mObserverList: Observer<List<AppNote>>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,6 +35,7 @@ class MainFragment : Fragment() {
     }
 
     private fun initialization() {
+        setHasOptionsMenu(true)
         mAdapter = MainAdapter()
         mRecyclerView = mBinding.recyclerView
         mRecyclerView.adapter = mAdapter
@@ -44,8 +44,8 @@ class MainFragment : Fragment() {
             mAdapter.setList(list)
         }
         mViewModel = ViewModelProvider(this).get(MainFramentViewModel::class.java)
-        mViewModel.allNotes.observe(viewLifecycleOwner,mObserverList)
-        mBinding.btnAddNote.setOnClickListener{
+        mViewModel.allNotes.observe(viewLifecycleOwner, mObserverList)
+        mBinding.btnAddNote.setOnClickListener {
             APP_ACTIVITY.navController.navigate(R.id.action_mainFragment_to_addNewNoteFragment)
         }
     }
@@ -58,10 +58,27 @@ class MainFragment : Fragment() {
 
     }
 
-    companion object{
-        fun click(note:AppNote){
-            val bundle = Bundle ()
-            bundle.putSerializable("note",note)
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.main_action_menu, menu)
+
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.btn_exit -> {
+                Log.d("buttoncheck", "the button was called")
+                mViewModel.signOut()
+                APP_ACTIVITY.navController.navigate(R.id.action_mainFragment_to_startFragment)
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    companion object {
+        fun click(note: AppNote) {
+            val bundle = Bundle()
+            bundle.putSerializable("note", note)
             APP_ACTIVITY.navController.navigate(R.id.action_mainFragment_to_noteFragment, bundle)
         }
     }

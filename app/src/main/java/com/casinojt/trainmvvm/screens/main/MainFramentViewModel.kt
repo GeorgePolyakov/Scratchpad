@@ -7,4 +7,7 @@ import com.casinojt.trainmvvm.utilits.REPOSITORY
 class MainFramentViewModel(application:Application):AndroidViewModel(application){
     val allNotes  = REPOSITORY.allNotes
 
+    fun signOut(){
+        REPOSITORY.signOut()
+    }
 }

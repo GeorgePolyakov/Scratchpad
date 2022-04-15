@@ -14,7 +14,6 @@ import com.casinojt.trainmvvm.utilits.showToast
 
 class AddNewNoteFragment : Fragment() {
 
-
     private var binding:FragmentAddNewNoteBinding? = null
     private val mBinding get() = binding!!
     private lateinit var mViewModel: AddNewNoteFragmentViewModel
